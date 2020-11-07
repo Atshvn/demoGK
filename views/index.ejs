@@ -36,7 +36,8 @@
                     <td><%= value.thongSo %></td>
                     <td>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="check" onclick="addLK('<%= value.maLK %>')">
+                            <input type="checkbox" class="form-check-input" id="check"
+                                onclick="addLK('<%= value.maLK %>')">
                         </div>
                     </td>
                     <!-- <td><img style=" width: 50px; height: 50px; border-radius: 50%;"  src="https://baitapcnm.s3.amazonaws.com/<%= value.avatar %>" alt=""> -->
@@ -59,15 +60,14 @@
     function addLK(id) {
 
         arrlk.push(id);
-         arrlk = [...new Set(arrlk)];
+        arrlk = [...new Set(arrlk)];
         console.log(arrlk)
-        //document.getElementById("btnDelete").href(`/api/linhkiens/delete/+${arrlk}}`);
+        
         document.getElementById("delete").setAttribute('href', `/linhkien/delete/${arrlk}`);
+        };
 
-
-    }
-
-
+       
 </script>
+
 
 </html>
