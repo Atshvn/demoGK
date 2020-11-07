@@ -58,15 +58,11 @@
 <script>
     var arrlk = [];
     function addLK(id) {
-
         arrlk.push(id);
         arrlk = [...new Set(arrlk)];
         console.log(arrlk)
-        
         document.getElementById("delete").setAttribute('href', `/linhkien/delete/${arrlk}`);
-        };
-
-       
+    };   
 </script>
 
 

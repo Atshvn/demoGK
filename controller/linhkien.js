@@ -60,7 +60,9 @@ module.exports.createLinhKien = function (req, res, next) {
 module.exports.delete = function(req, res, next) {
     var idLK = [];
     idLK = req.params.id.split(",");
-    var i = 0;
+    function sleep(millis) {
+        return new Promise(resolve => setTimeout(resolve, millis));
+      };
     for( var x of idLK){
         var params = {
             TableName: 'LinhKien',
@@ -68,17 +70,16 @@ module.exports.delete = function(req, res, next) {
                 "maLK": x
             }
         };
-        i++;
         docClient.delete(params, function (err, data) {
             if (err) {
                 console.log('Batch delete unsuccessful ...');
                 res.send("users::delete::error - " + JSON.stringify(err, null, 2));
-            } else {         
-               
-            }
-           
+            } 
         });       
     };
-    return  res.redirect('/linhkien'); 
-  
+    sleep(3000).then(() => {
+        return  res.redirect('/linhkien'); 
+    });
+    
+
 }
